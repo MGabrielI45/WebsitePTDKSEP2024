@@ -4,7 +4,7 @@
 ini baru template dari next js + ditambahin dikit
 
 sebelum dipake perlu run command ini:
-npm install
+`npm install`
 
 biar nanti ke install dependencies nya
 </p>

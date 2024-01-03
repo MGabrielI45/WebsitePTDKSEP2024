@@ -5,14 +5,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Navbar = () => {
-    const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-    const toggleDropdown = () => {
-        setShowDropdown(!showDropdown);
-    };
+  const toggleDropdown = () => {
+      setShowDropdown(!showDropdown);
+  };
 
   return (
-    <div className='flex items-center justify-between fixed top-0 left-0 w-full border-[2px] px-10 shadow-md bg-white top-0 z-50'>
+    <div className='flex items-center justify-between top-0 left-0 w-full border-[0px] px-10 shadow-md bg-white top-0 z-50 font-medium sticky'>
         <Image 
           src='/logo.png'
           width={60}

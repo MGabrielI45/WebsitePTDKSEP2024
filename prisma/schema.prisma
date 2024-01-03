@@ -19,6 +19,8 @@ model User {
   emergencyNumber    Int
   lineId             String
   instagram          String
+  email              String        @unique
+  profilePicture     String
 }
 
 model Reminder {
@@ -26,5 +28,4 @@ model Reminder {
   title              String
   descriptionLink    String
   date               DateTime
-  num                Int
 }

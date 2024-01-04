@@ -28,8 +28,13 @@ const LoginPage = () => {
             placeholder="Password"
             className="bg-gray-300 px-4 py-2 rounded-md mb-4 w-72"
           />
+          <Link href="/LoginPage/ForgetPassword">
+            <div className="text-sm text-blue-500 hover:underline cursor-pointer">
+              Forgot Password?
+            </div>
+          </Link>
           <Link href="/">
-            <div className="bg-[#D32026] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <div className="mt-4 bg-[#D32026] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
               LOG IN
             </div>
           </Link>

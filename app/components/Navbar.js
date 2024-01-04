@@ -36,7 +36,7 @@ const Navbar = () => {
             <div className='absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-md'>
               <div className='py-2'>
                 <div className='border-b border-gray-200 hover:bg-gray-100 cursor-pointer py-1 px-4'>My Profile</div>
-                <div className='hover:bg-gray-100 cursor-pointer py-1 px-4'>Log Out</div>
+                <div className='hover:bg-gray-100 cursor-pointer py-1 px-4'><Link href='/LoginPage'>Log Out</Link></div>
               </div>
             </div>
           )}

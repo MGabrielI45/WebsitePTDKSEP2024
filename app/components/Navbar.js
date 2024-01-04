@@ -5,14 +5,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Navbar = () => {
-    const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-    const toggleDropdown = () => {
-        setShowDropdown(!showDropdown);
-    };
+  const toggleDropdown = () => {
+      setShowDropdown(!showDropdown);
+  };
 
   return (
-    <div className='flex items-center justify-between fixed top-0 left-0 w-full border-[2px] px-10 shadow-md bg-white top-0 z-50'>
+    <div className='flex items-center justify-between top-0 left-0 w-full border-[0px] px-10 shadow-md bg-white top-0 z-50 font-medium sticky'>
         <Image 
           src='/logo.png'
           width={60}
@@ -36,7 +36,7 @@ const Navbar = () => {
             <div className='absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-md'>
               <div className='py-2'>
                 <div className='border-b border-gray-200 hover:bg-gray-100 cursor-pointer py-1 px-4'>My Profile</div>
-                <div className='hover:bg-gray-100 cursor-pointer py-1 px-4'>Log Out</div>
+                <div className='hover:bg-gray-100 cursor-pointer py-1 px-4'><Link href='/LoginPage'>Log Out</Link></div>
               </div>
             </div>
           )}

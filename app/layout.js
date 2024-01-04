@@ -20,11 +20,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {(pathname != '/LoginPage') ? <Navbar /> : null}
+        {(pathname != '/LoginPage' && pathname != '/LoginPage/ForgetPassword') ? <Navbar /> : null}
         <main>
           {children}
         </main>
-        {(pathname != '/LoginPage') ? <Footer /> : null}
+        {(pathname != '/LoginPage' && pathname != '/LoginPage/ForgetPassword') ? <Footer /> : null}
       </body>
     </html>
   )

@@ -27,6 +27,15 @@ model Reminder {
   id                 String     @id @default(uuid())
   title              String
   descriptionLink    String
-  createdAt          DateTime   @default(now())
-  updatedAt          DateTime
+  deadlineDate       DateTime
+}
+
+// misal kita bakal sampe page tugas
+model Tugas {
+  id              String     @id @default(uuid())
+  title           String
+  deadlineDate    DateTime
+  description     String
+  fileLink        String?
+  grade           String    @default("Not Graded")
 }

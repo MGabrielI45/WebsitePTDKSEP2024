@@ -6,19 +6,23 @@ const Reminder = () => {
   const listReminder = [
     {
       'tanggal':'Jumat, 11 Oktober 2024',
-      'judul':'Tugas Individu: personal finance'
+      'judul':'Tugas Individu: personal finance',
+      'deskripsi':'tugas essay 5 lembar mengenai analisis fundamental'
     },
     {
       'tanggal':'Sabtu 12, Oktober 2024',
-      'judul':'PTD DAY 3: Introduction to Macroeconomics'
+      'judul':'PTD DAY 3: Introduction to Macroeconomics',
+      'deskripsi':'tugas essay 5 lembar mengenai analisis fundamental'
     },
     {
       'tanggal':'Selasa, 15 Oktober 2024',
-      'judul':'Tugas Angkatan: Organogram KSEP 2023'
+      'judul':'Tugas Angkatan: Organogram KSEP 2023',
+      'deskripsi':'tugas essay 5 lembar mengenai analisis fundamental'
     },
     {
-      'tanggal':'17 Februari 2023',
-      'judul':'Panggilan Malam'
+      'tanggal':'17 Oktober 2024',
+      'judul':'Panggilan Malam',
+      'deskripsi':'tugas essay 5 lembar mengenai analisis fundamental'
     }
   ];
 
@@ -38,7 +42,7 @@ const Reminder = () => {
           </div>
           <div>
             {listReminder.map((item, index) => (
-              <ReminderCard key={index} judul={item.judul} tanggal={item.tanggal} />
+              <ReminderCard key={index} judul={item.judul} tanggal={item.tanggal}/>
             ))}
           </div>
         </div>

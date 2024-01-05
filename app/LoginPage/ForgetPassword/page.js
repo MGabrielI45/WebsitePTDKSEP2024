@@ -77,9 +77,9 @@ const ForgotPassword = () => {
               value={data.username}
               onChange={handleChange}
               className="
-                rounded-md px-4 py-2 w-80 text-white 
+                rounded-md bg-[#EBEBEB] px-4 py-2 w-80 
                 focus:outline-none focus:border-transparent focus:ring-0 
-                autofill:shadow-[inset_0_0_0px_1000px_rgb(32,32,32)]
+                autofill:shadow-[inset_0_0_0px_1000px_rgb(235,235,235)]
               "
             />
           </div>

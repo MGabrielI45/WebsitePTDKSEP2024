@@ -1,7 +1,47 @@
+'use client'
+
 import React from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from "next/navigation";
 
 const ForgotPassword = () => {
+  
+  const[data, setData] = useState({
+    username: ""
+  })
+
+  const[isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setData((prevProps) => ({
+      ...prevProps,
+      [name]: value
+    }));
+  };
+
+  const router = useRouter()
+  const handleSubmit = async event => {
+    
+    event.preventDefault()
+    setIsSubmitting(true)
+
+    const res = await fetch('../../api/send', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+
+    if (res.status === 200) {
+      setData({
+        username: ""
+      })
+      setIsSubmitting(false)
+      router.push('/LoginPage')
+    }
+
+    return res.json()
+  }
+  
   const divStyle = {
     backgroundImage: 'url(/LoginBackground.png)',
     backgroundRepeat: 'no-repeat',
@@ -22,25 +62,39 @@ const ForgotPassword = () => {
           className="mt-4"
         />
         <h1 className="text-3xl font-bold mt-8">Forgot Password</h1>
-        <div className="mt-8">
-          <label htmlFor="username" className="block mb-2">
-            What is your username:
-          </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Username"
-            className="border border-gray-300 rounded-md px-4 py-2 w-80 focus:outline-none focus:border-blue-500"
-          />
-        </div>
-        <button className="mt-8">
-          <Link href="/LoginPage">
-            <div className="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:bg-blue-700">
-              Send Request
+        
+        {/* Form */}
+        <form id="forgot-password-form" onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
+          <div className="mt-8">
+            <label htmlFor="username" className="block mb-2">
+              What is your username:
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              value={data.username}
+              onChange={handleChange}
+              className="
+                rounded-md px-4 py-2 w-80 text-white 
+                focus:outline-none focus:border-transparent focus:ring-0 
+                autofill:shadow-[inset_0_0_0px_1000px_rgb(32,32,32)]
+              "
+            />
+          </div>
+          <button type="submit" className="mt-8" disabled={isSubmitting}>
+            <div className="
+              block rounded bg-blue-100 text-white font-bold py-2 px-4 
+              hover:bg-blue-200
+              focus:outline-none focus:border-transparent focus:ring-0
+              disabled:pointer-events-none disabled:opacity-80
+            ">
+              {(isSubmitting) ? 'Sending Request' : 'Send Request'}
             </div>
-          </Link>
-        </button>
+          </button>
+        </form>
+
       </div>
     </div>
   );

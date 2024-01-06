@@ -18,7 +18,7 @@ const AssignmentDetails = ({ assignment }) => {
       <hr className='border-t-2 border-gray-300 w-[1200px] mb-4' />
       <div className='relative border-2 border-gray-300 p-4 w-[1200px]'>
         {/*<p className='text-lg font-semibold mb-2'>{assignment.tanggal}</p>*/}
-        <div className='absolute top-0 right-0 text-red-500 px-7'>
+        <div className='absolute top-0 right-0 text-red-500 px-7 p-4'>
           <p className='text-lg font-semibold'>{assignment.tanggal}</p>
         </div>
         <h2 className='text-lg font-semibold mb-2'>DESKRIPSI TUGAS</h2>

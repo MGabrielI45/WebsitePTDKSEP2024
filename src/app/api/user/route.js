@@ -1,5 +1,6 @@
-import prisma from "@/lib/prismadb";
+import client from "@/libs/prismadb";
 import { NextResponse } from "next/server";
+
 // import {getCurrentUser} from "@/lib/session";
 
 export async function GET(req) {
@@ -7,9 +8,13 @@ export async function GET(req) {
   // const user = await getCurrentUser();
 
   try {
-    const { email } = await req.json();
 
-    const user = await prisma.user.findUnique({
+    const { searchParams } = new URL(req.url)
+    const email = searchParams.get('email')
+    
+
+
+    const user = await client.user.findUnique({
       where: {
         email: email,
       },
@@ -22,6 +27,7 @@ export async function GET(req) {
       { status: 200 }
     );
   } catch (error) {
+
     return NextResponse.json(
       { message: "Something went wrong when getting user" },
       { status: 500 }
@@ -32,6 +38,9 @@ export async function GET(req) {
 export async function POST(req) {
   // tunggu fitur login selesai untuk autentikasi
   // const user = await getCurrentUser();
+
+  const { data } = await req.json();
+
   try {
 
     //  isi datanya
@@ -50,7 +59,7 @@ export async function POST(req) {
     // profilePicture: profilePicture
     // }
 
-    const user = await prisma.user.create({
+    const user = await client.user.create({
       data: data,
     });
 
@@ -73,9 +82,9 @@ export async function PATCH(req) {
   // const user = await getCurrentUser(); 
 
   try {
-    const { email } = await req.json();
+    const { email, data } = await req.json();
 
-    const user = await await prisma.user.update({
+    const user = await client.user.update({
       where: {
         email: email,
       },
@@ -101,7 +110,7 @@ export async function PATCH(req) {
 //   try {
 //     const { email } = await req.json();
 
-//     const user = await prisma.user.delete({
+//     const user = await client.user.delete({
 //       where: {
 //         email: email,
 //       },

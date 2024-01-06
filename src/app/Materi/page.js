@@ -2,22 +2,9 @@
 
 import React from 'react';
 import MateriItem from './MateriItem';
+import { listMateri } from '../constants';
 
 const Page = () => {
-  const listMateri = [
-    {
-      'judul': 'PTD DAY 1 : Personal Finance'
-    },
-    {
-      'judul': 'PTD DAY 2 : Pyschology of Economics'
-    },
-    {
-      'judul': 'PTD DAY 3 : Fundamental Analysis'
-    },
-    {
-      'judul': 'PTD DAY 4 : Technical Analysis'
-    }
-  ];
 
   return (
     <div className="text-center py-8">

@@ -5,18 +5,9 @@
 import React, { useState, useEffect } from "react";
 import Avatar from "react-avatar-edit";
 import axios from "axios";
+import { profileData } from "../constants";
 
 const Profile = () => {
-  const profileData = {
-    "Nama Lengkap": "Adiel",
-    "Tempat, Tanggal Lahir": "Jakarta, 24 April 2005",
-    "Fakultas / Jurusan": "FMIPA / TPB",
-    "No. Absen": "2",
-    "Telepon Pribadi": "081221590756",
-    "Telepon Darurat": "081221589619 (ibu)",
-    "Id Line": "adlrm",
-    Instagram: "adielrum",
-  };
 
   const [src, setSrc] = useState(null);
   const [img, setImg] = useState(null);

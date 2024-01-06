@@ -1,6 +1,5 @@
 // pages/profile.js
 
-<<<<<<< HEAD
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -51,20 +50,6 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
     }
-=======
-import React from 'react';
-
-const Profile = () => {
-  const profileData = {
-    'Nama Lengkap': 'Adiel',
-    'Tempat, Tanggal Lahir': 'Jakarta, 24 April 2005',
-    'Fakultas / Jurusan': 'FMIPA / TPB',
-    'No. Absen': '2',
-    'Telepon Pribadi': '081221590756',
-    'Telepon Darurat': '081221589619 (ibu)',
-    'Id Line': 'adlrm',
-    'Instagram': 'adielrum',
->>>>>>> 0e73e3c87a96ee8c28f939da2119e3d30d3c059a
   };
 
   const keys = Object.keys(profileData);
@@ -74,7 +59,6 @@ const Profile = () => {
       <div className="flex justify-center items-center">
         <div className="relative">
           <img
-<<<<<<< HEAD
             src={!img ? "/pfpPlaceholder.png" : img}
             alt="Profile Picture"
             className="mx-auto mb-8 w-32 h-32 rounded-full"
@@ -115,27 +99,14 @@ const Profile = () => {
               </div>
             </div>
           </dialog>
-=======
-            src="/pfpPlaceholder.png"
-            alt="Profile Picture"
-            className="mx-auto mb-8 w-32 h-32 rounded-full"
-          />
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded absolute bottom-0 right-0 mb-2 mr-2 text-xs">
-            +
-          </button>
->>>>>>> 0e73e3c87a96ee8c28f939da2119e3d30d3c059a
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {keys.map((key) => (
-<<<<<<< HEAD
           <div
             key={key}
             className="bg-gray-200 shadow-md rounded-lg overflow-hidden"
           >
-=======
-          <div key={key} className="bg-gray-200 shadow-md rounded-lg overflow-hidden">
->>>>>>> 0e73e3c87a96ee8c28f939da2119e3d30d3c059a
             <div className="px-4 py-3">
               <p className="font-semibold mb-1 text-sm">{key}</p>
               <input
@@ -155,7 +126,3 @@ const Profile = () => {
 };
 
 export default Profile;
-<<<<<<< HEAD
-=======
- 
->>>>>>> 0e73e3c87a96ee8c28f939da2119e3d30d3c059a

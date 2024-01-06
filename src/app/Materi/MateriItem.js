@@ -5,7 +5,7 @@
 import React, { useState } from 'react';
 import { FaArrowDown, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
-import materiPlaceholder from '../../../public/materiPlaceholder.PNG';
+import materiPlaceholder from '@public/materiPlaceholder.PNG';
 
 const MateriItem = ({ judul }) => {
   const [showImage, setShowImage] = useState(false);

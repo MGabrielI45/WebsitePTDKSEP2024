@@ -18,17 +18,20 @@ export async function POST(req) {
             },
         });
 
-        console.log(user)
+       
 
         const data = await resend.emails.send({
             from: 'Admin <onboarding@resend.dev>',
             to: 'timothyniels@gmail.com',
             subject: 'Forgot Password',
             react: forgotPasswordEmail({ 
-                username: username
+                email: user.email,
+                username: user.username,
+                id: user.id,
             })
         })
 
+        console.log(data)
         return NextResponse.json({data})
     } 
     catch (error) {

@@ -82,13 +82,15 @@ export async function PATCH(req) {
   // const user = await getCurrentUser(); 
 
   try {
-    const { email, data } = await req.json();
+    const { email, profilePicture } = await req.json(); // Sementara nerima profile picture doang, tunggu fitur lain selesai
 
     const user = await client.user.update({
       where: {
         email: email,
       },
-      data: data,
+      data : {
+        profilePicture: profilePicture
+      }
     });
     return NextResponse.json(
       {

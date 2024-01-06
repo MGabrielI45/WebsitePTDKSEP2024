@@ -15,7 +15,10 @@
     "next": "14.0.4",
     "prisma": "^5.7.1",
     "react": "^18",
+<<<<<<< HEAD
     "react-avatar-edit": "^1.2.0",
+=======
+>>>>>>> 0e73e3c87a96ee8c28f939da2119e3d30d3c059a
     "react-dom": "^18",
     "react-email": "1.10.0",
     "react-icons": "^4.12.0",

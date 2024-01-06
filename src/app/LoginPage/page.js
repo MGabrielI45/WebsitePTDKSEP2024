@@ -20,7 +20,7 @@ const LoginPage = () => {
       </Head>
 
       <div className="min-h-screen flex items-center justify-center" style={divStyle}>
-        <div className="flex flex-col items-center bg-white p-8 rounded-md">
+        <div className="flex flex-col items-center p-8 rounded-md">
           <div className="mb-4">
             <Image src="/logo.png" height={50} width={50} />
           </div>

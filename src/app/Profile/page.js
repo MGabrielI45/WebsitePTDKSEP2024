@@ -60,11 +60,10 @@ const Profile = () => {
           >
             +
           </button>
-          <dialog id="modal" className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box">
+          <dialog id="modal" className="modal modal-bottom sm:modal-middle rounded-md">
+            <div className="modal-box w-[500px] p-6">
               <h3 className="font-bold text-lg">Set Profile Picture</h3>
-
-              <div>
+              <div className="flex flex-col items-center mt-4 mb-6">
                 <Avatar
                   width={200}
                   height={200}
@@ -72,22 +71,27 @@ const Profile = () => {
                   onClose={onClose}
                   onBeforeFileLoad={onBeforeFileLoad}
                   src={src}
+                  className="object-cover rounded-full"
                 />
-                <h2>Preview</h2>
+                <h2 className="mt-4 mb-2 font-semibold">Preview</h2>
                 {preview && (
-                  <img height={200} width={200} src={preview} alt="Preview" />
+                  <img
+                    className="mb-4 object-cover rounded"
+                    height={200}
+                    width={200}
+                    src={preview}
+                    alt="Preview"
+                  />
                 )}
               </div>
-
-              <div className="modal-action">
-                <form method="dialog">
-                  {/* if there is a button in form, it will close the modal */}
-                  <button className="btn">Close</button>
-                  <button className="btn" onClick={handleImageSubmit}>
-                    Submit
-                  </button>
-                </form>
-              </div>
+              <form method='dialog' className="flex justify-end space-x-4">
+                <button className="btn bg-gray-300 hover:bg-gray-400 rounded-lg p-3" onClick={onClose}>
+                  Close
+                </button>
+                <button className="btn bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg" onClick={handleImageSubmit}>
+                  Submit
+                </button>
+              </form>
             </div>
           </dialog>
         </div>

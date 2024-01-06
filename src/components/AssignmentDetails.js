@@ -15,8 +15,8 @@ const AssignmentDetails = ({ assignment }) => {
         </Link>
         <h1 className='text-4xl font-bold'>{assignment.judul}</h1>
       </div>
-      <hr className='border-t-2 border-gray-300 w-[1200px] mb-4' />
-      <div className='relative border-2 border-gray-300 p-4 w-[1200px]'>
+      <hr className='border-t-2 border-gray-300 w-full mb-4' />
+      <div className='relative border-2 border-gray-300 p-4 w-full'>
         {/*<p className='text-lg font-semibold mb-2'>{assignment.tanggal}</p>*/}
         <div className='absolute top-0 right-0 text-red-500 px-7 p-4'>
           <p className='text-lg font-semibold'>{assignment.tanggal}</p>

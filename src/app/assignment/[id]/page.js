@@ -3,7 +3,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation';
-import AssignmentDetails from '../../components/AssignmentDetails'; // Update the path accordingly
+import AssignmentDetails from '@/components/AssignmentDetails'; // Update the path accordingly
 
 const AssignmentPage = () => {
     const router = useRouter();

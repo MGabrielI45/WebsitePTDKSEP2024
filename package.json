@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
-    "@react-email/components": "0.0.12",
+    "@react-email/components": "^0.0.12",
+    "axios": "^1.6.5",
     "next": "14.0.4",
     "prisma": "^5.7.1",
     "react": "^18",

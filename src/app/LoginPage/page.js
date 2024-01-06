@@ -61,6 +61,12 @@ const LoginPage = () => {
               </div>
             </Link>
 
+            <Link href="/LoginPage/NewAccount">
+              <div className="text-sm text-blue-500 hover:underline cursor-pointer mt-2">
+                Make a new account
+              </div>
+            </Link>
+
             <Link href="/">
               <div className="mt-4 bg-gradient-to-r from-[#D32026] to-[#FA6065] hover:bg-blue-700 text-white font-bold py-2 px-10 rounded-full cursor-pointer">
                 Login Now

@@ -16,15 +16,16 @@ const inter = Inter({ subsets: ['latin'] })
 export default function RootLayout({ children }) {
   
   const pathname = usePathname();
-
+  const noFooter = ['/LoginPage','/LoginPage/ForgetPassword','/LoginPage/NewAccount']
+  const haveFooter = noFooter.includes(pathname)
   return (
     <html lang="en">
       <body>
-        {(pathname != '/LoginPage' && pathname != '/LoginPage/ForgetPassword') ? <Navbar /> : null}
+        {(!haveFooter) ? <Navbar /> : null}
         <main>
           {children}
         </main>
-        {(pathname != '/LoginPage' && pathname != '/LoginPage/ForgetPassword') ? <Footer /> : null}
+        {(!haveFooter) ? <Footer /> : null}
       </body>
     </html>
   )

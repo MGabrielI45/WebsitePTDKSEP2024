@@ -1,4 +1,4 @@
-import { forgotPasswordEmail } from '@/app/emails/forgot-password';
+import { ForgotPasswordEmail } from '@/app/emails/ForgotPassword';
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import client from "@/libs/prismadb";
@@ -7,7 +7,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
     
-
     try {
         const body = await req.json()
         const {username} = body
@@ -18,13 +17,11 @@ export async function POST(req) {
             },
         });
 
-       
-
         const data = await resend.emails.send({
             from: 'Admin <onboarding@resend.dev>',
             to: 'timothyniels@gmail.com',
             subject: 'Forgot Password',
-            react: forgotPasswordEmail({ 
+            react: ForgotPasswordEmail({ 
                 email: user.email,
                 username: user.username,
                 id: user.id,

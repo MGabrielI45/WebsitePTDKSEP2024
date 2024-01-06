@@ -2,15 +2,12 @@ import {
   Body,
   Button,
   Container,
-  Column,
   Head,
   Heading,
   Hr,
   Html,
   Img,
-  Link,
   Preview,
-  Row,
   Section,
   Tailwind,
   Text,
@@ -18,15 +15,11 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface ForgotPasswordEmailProps {
-  email: string;
-  username: string;
-  id: string;
-}
-
-export const forgotPasswordEmail: React.FC<
-  Readonly<ForgotPasswordEmailProps>
-> = ({ email, username, id }) => (
+export const ForgotPasswordEmail = ({ 
+  email, 
+  username, 
+  id 
+}) => (
   <Html>
     <Head>
       <Font
@@ -59,14 +52,13 @@ export const forgotPasswordEmail: React.FC<
           <Section className="mt-5">
             <Text className="text-black text-sm">Hello,</Text>
             <Text className="text-black text-sm">
-              The PTD KSEP account <strong>{username}</strong> forgot their
+              The following PTD KSEP account forgot their
               password.
             </Text>
             <Text className="text-black text-sm">
-                User ID: {id}
-            </Text>
-            <Text className="text-black text-sm">
-                Email: {email}
+                <strong> User ID  </strong> : {id}        <br />
+                <strong> Username </strong> : {username}  <br />
+                <strong> Email    </strong> : {email}
             </Text>
           </Section>
           <Section className="text-center mt-5">

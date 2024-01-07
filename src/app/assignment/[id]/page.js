@@ -1,26 +1,26 @@
-// app/pages/assignment/[id].js
-
 'use client'
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import AssignmentDetails from '@/components/AssignmentDetails'; // Update the path accordingly
+import { listReminder } from '@/app/constants'; // Import your listReminder
 
 const AssignmentPage = () => {
-    const router = useRouter();
-    const { id } = router.query || {}; // This will capture the assignment ID from the URL
+  const router = useRouter();
+  const { id } = router.query || {};
   
-    // Fetch the assignment details based on the ID (you can use this ID to filter from your list)
+  // fetching sesad
   
-    // Mock assignment data for demonstration
-    const assignment = {
-      judul: 'Sample Assignment',
-      tanggal: 'Some date',
-      deskripsi: 'Assignment description',
-    };
+  const curPath = usePathname();
+  const idx = parseInt(curPath[curPath.length - 1], 10);
   
-    return ( 
-        <AssignmentDetails assignment={assignment} />
-    );
+  // console.log(idx);
+  // Find the selected assignment from the listReminder
+  
+  const selectedAssignment = listReminder[idx];
+
+  return ( 
+    <AssignmentDetails assignment={selectedAssignment} />
+  );
 };
 
 export default AssignmentPage;

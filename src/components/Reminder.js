@@ -20,7 +20,7 @@ const Reminder = () => {
           </div>
           <div>
             {listReminder.map((item, index) => (
-              <ReminderCard key={index} judul={item.judul} tanggal={item.tanggal}/>
+              <ReminderCard id={index} judul={item.judul} tanggal={item.tanggal}/>
             ))}
           </div>
         </div>

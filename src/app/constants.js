@@ -1,12 +1,15 @@
 export const listMateri = [
     {
-      'judul': 'PTD DAY 1 : Personal Finance'
+      'judul': 'PTD DAY 1 : Personal Finance',
+      'tanggal':'17 Oktober 2023'
     },
     {
-      'judul': 'PTD DAY 2 : Pyschology of Economics'
+      'judul': 'PTD DAY 2 : Pyschology of Economics',
+      'tanggal':'17 Oktober 2023'
     },
     {
-      'judul': 'PTD DAY 3 : Fundamental Analysis'
+      'judul': 'PTD DAY 3 : Fundamental Analysis',
+      'tanggal':'17 Oktober 2023'
     },
     {
       'judul': 'PTD DAY 4 : Technical Analysis'
@@ -67,3 +70,22 @@ export const listDiskusi = [
     'profile':'url("/pfpPlaceholder.png)'
   }
 ];
+
+export const listDokumentasi = [
+    {
+      'judul': 'PTD DAY 1 : Personal Finance',
+      'tanggal':'17 Oktober 2023'
+    },
+    {
+      'judul': 'PTD DAY 2 : Pyschology of Economics',
+      'tanggal':'17 Oktober 2023'
+    },
+    {
+      'judul': 'PTD DAY 3 : Fundamental Analysis',
+      'tanggal':'17 Oktober 2023'
+    },
+    {
+      'judul': 'PTD DAY 4 : Technical Analysis',
+      'tanggal':'19 Oktober 2023'
+    }
+  ];

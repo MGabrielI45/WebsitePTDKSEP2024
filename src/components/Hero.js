@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
+import herobg from '@public/HeroBackground.png';
 
-const Hero = async () => {
-  
+const Hero = () => {
+  const divStyle = {
+    backgroundImage: `url(/HeroBackground.png)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '100vh',
+  };
 
   return (
-    
-    <div className='h-screen'>
-        <div className='mt-[75px] px-10 text-left'>
-          <h2 className='font-semibold text-[36px] text-red-100'>Welcome to,</h2>
-          <h2 className='font-bold text-[80px]'>
-            PTD KSEP <br /> 
-            ITB 2023
-          </h2>
-        </div>  
+    <div style={divStyle}>
+      <div className='px-10 text-left'>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

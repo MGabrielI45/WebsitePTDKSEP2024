@@ -4,16 +4,12 @@ import React, {useState} from "react";
 import { useSession, signIn, signOut } from 'next-auth/react';
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head";
 
-
-import { ToastContainer, toast } from "react-toastify";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
+import { ToastContainer } from "react-toastify";
 import { FormData} from '@/types/login'
-import credentials from "next-auth/providers/credentials";
 import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
+import { errorNotification, successNotification} from "../toast";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -22,7 +18,6 @@ const LoginPage = () => {
   if (session.data) {
     router.push("/");
   }
-
 
   const divStyle = {
     backgroundImage: 'url("/LoginBackground.png")',
@@ -52,23 +47,14 @@ const LoginPage = () => {
     
     if (!signInData?.ok) {
       console.log("wakwak", signInData)
-      toast.error((signInData.error === "CredentialsSignin" ? "User doesn't exist or wrong password!" : "Oops! Something went wrong!"), {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      errorNotification(signInData.error === "CredentialsSignin" ? "User doesn't exist or wrong password!" : "Oops! Something went wrong!")
     } else {
       router.refresh();
       router.push('/');
     }
   }
 
-  const handleGoogleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleGoogleSignin = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     console.log("sdf")
@@ -79,16 +65,7 @@ const LoginPage = () => {
     
     if (!signInData?.ok) {
       console.log("wakwak", signInData)
-      toast.error("Oops! Something went wrong!", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      errorNotification("Oops! Something went wrong!")
     } else {
       router.refresh();
       router.push('/');
@@ -96,14 +73,6 @@ const LoginPage = () => {
   }
   return (
     <div>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
 
       <div
         className="min-h-screen flex items-center justify-center"
@@ -133,7 +102,7 @@ const LoginPage = () => {
                   </span>
                   <input
                     type="email"
-                    placeholder="email"
+                    placeholder="Email"
                     name="email"
                     required
                     value={formData.email}
@@ -170,7 +139,7 @@ const LoginPage = () => {
 
             <Link href="/sign-up">
               <div className="text-sm text-blue-500 hover:underline cursor-pointer mt-2">
-                Make a new account
+                Create a New Account!
               </div>
             </Link>
 

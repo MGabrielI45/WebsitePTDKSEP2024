@@ -17,7 +17,7 @@ import * as React from "react";
 
 export const ForgotPasswordEmail = ({ 
   email, 
-  username, 
+  name, 
   id 
 }) => (
   <Html>
@@ -57,7 +57,7 @@ export const ForgotPasswordEmail = ({
             </Text>
             <Text className="text-black text-sm">
                 <strong> User ID  </strong> : {id}        <br />
-                <strong> Username </strong> : {username}  <br />
+                <strong> Name </strong> : {name}  <br />
                 <strong> Email    </strong> : {email}
             </Text>
           </Section>

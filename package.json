@@ -11,7 +11,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@next-auth/prisma-adapter": "^1.0.7",
-    "@next/font": "^14.0.4",
     "@prisma/client": "^5.7.1",
     "@radix-ui/react-toast": "^1.1.5",
     "@react-email/components": "^0.0.12",
@@ -37,6 +36,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "20.10.6",
     "@types/react": "18.2.46",
     "autoprefixer": "^10.4.16",

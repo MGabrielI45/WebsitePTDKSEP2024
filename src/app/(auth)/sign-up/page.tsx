@@ -5,14 +5,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head";
 import { FormData } from "@/types/signup";
 import { IoMdMail, IoMdLock } from "react-icons/io";
 import { FaAddressCard } from "react-icons/fa6";
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { errorNotification, successNotification} from "../toast";
 
 const NewAccount = () => {
   const router = useRouter();
@@ -21,32 +21,6 @@ const NewAccount = () => {
   if (session.data) {
     router.push("/");
   }
-
-  const errorNotification = (message: string) => {
-    toast.error(message, {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
-
-  const successNotification = (message: string) => {
-    toast.success(message, {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      });
-  };
 
   const divStyle = {
     backgroundImage: 'url("/LoginBackground.png")',
@@ -60,15 +34,15 @@ const NewAccount = () => {
     password: "",
     repeatPassword: "",
   });
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+
+  // update data
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
-
+  
+  // credentials signup
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -102,6 +76,7 @@ const NewAccount = () => {
     }
   };
 
+  // google signup
   const handleGoogleSignUp = async () => {
 
     console.log("sdf")
@@ -112,16 +87,7 @@ const NewAccount = () => {
     
     if (!signInData?.ok) {
       console.log("wakwak", signInData)
-      toast.error("Oops! Something went wrong!", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      errorNotification("Oops! Something went wrong!")
     } else {
       router.refresh();
       router.push('/');
@@ -130,14 +96,6 @@ const NewAccount = () => {
 
   return (
     <div>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
 
       <div
         className="min-h-screen flex items-center justify-center"
@@ -230,25 +188,14 @@ const NewAccount = () => {
             </button>
           </form>
 
-          <Link href="/LoginPage">
+          <Link href="/sign-in">
             <div className="text-sm text-blue-500 hover:underline cursor-pointer mt-2">
               Already have an account? Login
             </div>
           </Link>
         </div>
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <ToastContainer/>
     </div>
   );
 };

@@ -4,6 +4,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
 import { useSession } from 'next-auth/react';
+import { errorNotification, successNotification} from "../toast";
+import { ToastContainer } from 'react-toastify';
 
 const ForgotPassword = () => {
   
@@ -38,14 +40,19 @@ const ForgotPassword = () => {
       body: JSON.stringify(data)
     })
 
-    if (res.status === 200) {
+    if (res.ok) {
       setData({
         email: ""
       })
-      setIsSubmitting(false)
-      router.push('/LoginPage')
+      successNotification("Email sent successfully!")
+      router.push('/sign-in')
+    } else {
+      errorNotification("Failed to send email")
     }
 
+    console.log(res)
+    console.log(data)
+    setIsSubmitting(false)
     return res.json()
   }
   
@@ -55,7 +62,7 @@ const ForgotPassword = () => {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
-
+  
   return (
     <div
       className="flex flex-col items-center justify-center min-h-screen"
@@ -74,13 +81,13 @@ const ForgotPassword = () => {
         <form id="forgot-password-form" onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
           <div className="mt-8">
             <label htmlFor="email" className="block mb-2">
-              What is your email:
+              Enter Your Email!
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
               value={data.email}
               onChange={handleChange}
               className="
@@ -103,6 +110,7 @@ const ForgotPassword = () => {
         </form>
 
       </div>
+      <ToastContainer />
     </div>
   );
 };

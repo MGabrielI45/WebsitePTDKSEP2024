@@ -22,16 +22,16 @@ const Navbar = () => {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href="/Jadwal">Jadwal</Link>
+          <Link href="/jadwal">Jadwal</Link>
         </li>
         <li>
-          <Link href="/Materi">Materi</Link>
+          <Link href="/materi">Materi</Link>
         </li>
         <li>
-          <Link href="/Diskusi">Diskusi</Link>
+          <Link href="/diskusi">Diskusi</Link>
         </li>
         <li>
-          <Link href="/Dokumentasi">Dokumentasi</Link>
+          <Link href="/dokumentasi">Dokumentasi</Link>
         </li>
       </ul>
       {session.status === "authenticated" ? (
@@ -60,7 +60,23 @@ const Navbar = () => {
           )}
         </div>
       ) : (
-        <Link href="/sign-in">Log in</Link>
+        <div className="relative" onClick={toggleDropdown}>
+          <img
+            src="/pfpPlaceholder.png"
+            width={40}
+            height={40}
+            className="cursor-pointer rounded-full"
+          />
+          {showDropdown && (
+            <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-md">
+              <div className="py-2">
+                <div className="hover:bg-gray-100 cursor-pointer py-1 px-4">
+                  <button onClick={signOut}>Log In</button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

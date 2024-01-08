@@ -37,9 +37,7 @@ export async function GET(req) {
     });
 
     return NextResponse.json(
-      {
-        user,
-      },
+      { user, },
       { status: 200 }
     );
   } catch (error) {

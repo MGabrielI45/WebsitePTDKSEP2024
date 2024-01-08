@@ -49,7 +49,7 @@ export const authOptions: NextAuthOptions = {
 
         return {
           id: `${existingUser.id}`,
-          username: existingUser.username,
+          name: existingUser.name,
           email: existingUser.email,
         };
       },
@@ -61,12 +61,11 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
-      console.log(token, user);
 
       if (user) {
         return {
           ...token,
-          username: user.username,
+          name: user.name,
         };
       }
       return token;
@@ -76,7 +75,7 @@ export const authOptions: NextAuthOptions = {
         ...session,
         user: {
           ...session.user,
-          username: token.username,
+          name: token.name,
         },
       };
       return session;

@@ -7,15 +7,17 @@ import Avatar from "react-avatar-edit";
 import axios from "axios";
 import { profileData } from "../constants";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
+  const router = useRouter();
   const session = useSession();
 
   if (session.status === "unauthenticated") {
-    router.push("/LoginPage");
+    router.push("/sign-in");
   }
   
-  
+
 
   const [src, setSrc] = useState(null);
   const [img, setImg] = useState(null);

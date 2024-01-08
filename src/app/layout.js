@@ -5,6 +5,7 @@ import  Provider from '@/components/provider'
 
 import { Montserrat } from 'next/font/google'
 import { usePathname } from 'next/navigation'
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -19,7 +20,7 @@ const montserrat = Montserrat({
 export default function RootLayout({ children }) {
   
   const pathname = usePathname();
-  const noFooter = ['/LoginPage','/LoginPage/ForgetPassword','/LoginPage/NewAccount']
+  const noFooter = ['/sign-in', '/sign-up', '/forgot-password', '/reset-password']
   const haveFooter = noFooter.includes(pathname)
 
   return (

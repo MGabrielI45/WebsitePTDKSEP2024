@@ -1,25 +1,26 @@
 'use client'
 
-import { Inter } from 'next/font/google'
-import './globals.css'
+import { Montserrat } from 'next/font/google'
+import { usePathname } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { usePathname } from 'next/navigation'
 
-const inter = Inter({ subsets: ['latin'] })
+import './globals.css'
 
-/*export const metadata = {
-  title: 'PTD KSEP 2024',
-  description: 'Website untuk PTD KSEP 2024.',
-} */
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+});
 
 export default function RootLayout({ children }) {
   
   const pathname = usePathname();
   const noFooter = ['/LoginPage','/LoginPage/ForgetPassword','/LoginPage/NewAccount']
   const haveFooter = noFooter.includes(pathname)
+
   return (
-    <html lang="en">
+    <html lang="en" className={montserrat.variable}>
       <body>
         {(!haveFooter) ? <Navbar /> : null}
         <main>

@@ -1,5 +1,7 @@
 'use client'
 
+import  Provider from '@/components/provider'
+
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
@@ -21,11 +23,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <Provider>
         {(!haveFooter) ? <Navbar /> : null}
         <main>
           {children}
         </main>
         {(!haveFooter) ? <Footer /> : null}
+        </Provider>
       </body>
     </html>
   )

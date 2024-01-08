@@ -3,11 +3,12 @@
 import React from 'react';
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
+import { useSession } from 'next-auth/react';
 
 const ForgotPassword = () => {
   
   const[data, setData] = useState({
-    username: ""
+    email: ""
   })
 
   const[isSubmitting, setIsSubmitting] = useState(false)
@@ -21,6 +22,12 @@ const ForgotPassword = () => {
   };
 
   const router = useRouter()
+  const session = useSession();
+
+  if (session.data) {
+    router.push("/");
+  }
+
   const handleSubmit = async event => {
     
     event.preventDefault()
@@ -33,7 +40,7 @@ const ForgotPassword = () => {
 
     if (res.status === 200) {
       setData({
-        username: ""
+        email: ""
       })
       setIsSubmitting(false)
       router.push('/LoginPage')
@@ -66,15 +73,15 @@ const ForgotPassword = () => {
         {/* Form */}
         <form id="forgot-password-form" onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
           <div className="mt-8">
-            <label htmlFor="username" className="block mb-2">
-              What is your username:
+            <label htmlFor="email" className="block mb-2">
+              What is your email:
             </label>
             <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Username"
-              value={data.username}
+              type="email"
+              id="email"
+              name="email"
+              placeholder="email"
+              value={data.email}
               onChange={handleChange}
               className="
                 rounded-md bg-[#EBEBEB] px-4 py-2 w-80 

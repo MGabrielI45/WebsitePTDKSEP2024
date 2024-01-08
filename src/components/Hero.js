@@ -1,7 +1,10 @@
 import React from 'react'
 
-const Hero = () => {
+const Hero = async () => {
+  
+
   return (
+    
     <div className='h-screen'>
         <div className='mt-[75px] px-10 text-left'>
           <h2 className='font-semibold text-[36px] text-red-100'>Welcome to,</h2>

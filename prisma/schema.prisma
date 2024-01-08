@@ -8,16 +8,9 @@ datasource db {
 }
 
 model Reminder {
-  id                 String     @id @default(uuid())
-  title              String
-  descriptionLink    String
-  deadlineDate       DateTime
-}
-
-// misal kita bakal sampe page tugas
-model Tugas {
-  id              String     @id @default(uuid())
+  id              String   @id @default(uuid())
   title           String
+  descriptionLink String
   deadlineDate    DateTime
   description     String
   fileLink        String?

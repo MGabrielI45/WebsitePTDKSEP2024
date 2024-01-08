@@ -20,7 +20,7 @@ const montserrat = Montserrat({
 export default function RootLayout({ children }) {
   
   const pathname = usePathname();
-  const noFooter = ['/sign-in', '/sign-up', '/forget-password', '/reset-password']
+  const noFooter = ['/sign-in', '/sign-up', '/forget-password', '/reset-password','/Admin']
   const haveFooter = noFooter.includes(pathname)
 
   return (

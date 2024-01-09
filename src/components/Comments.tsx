@@ -25,11 +25,9 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
     },
   });
 
-  const commentCounts = await db.comment.count({
-    where: {postId}
-  })
-
-  console.log("OAWKOAWKWOAKWOAOWAK", commentCounts)
+  comments.sort((a, b) => {
+    return a.commentLikes.length - b.commentLikes.length;
+  }).reverse()
 
   
 
@@ -73,7 +71,7 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
                 </div>
 
                 <div className="flex flex-col items-end col-span-2 justify-start">
-                  <CommentLike comment={comment} userEmail={user?.email} likes={0}/>
+                  <CommentLike comment={comment} userEmail={user?.email} likes={comment.commentLikes.length}/>
                 </div>
                 <div className="col-span-12 p-3">
                   <FormReply commentId={comment.id} />

@@ -4,14 +4,17 @@ declare module 'react-notifications';
 
 declare module "next-auth" {
     interface User{
-        name: string
+        name: string,
+        image: string
     }
   interface Session {
     user: User &{
-        name: string
+        name: string,
+        image: string
     }
     token: {
-        name: string
+        name: string,
+        image: string
     }
   }
 }

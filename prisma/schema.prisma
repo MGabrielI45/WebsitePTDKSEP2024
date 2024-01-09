@@ -49,17 +49,20 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String
-  email         String?   @unique
-  password  String?
+  email         String   @unique
+  password      String?
   emailVerified DateTime?
   image         String?
-  birthTimePlace     String?
+  birthPlace     String?
+  birthDate      String?
   faculty            String?
-  absentNumber       Int?
-  phoneNumber        Int?
-  emergencyNumber    Int?
+  major              String?
+  absentNumber       String?
+  phoneNumber        String?
+  emergencyNumber    String?
   lineId             String?
   instagram          String?
+  role               String?
   accounts      Account[]
   sessions      Session[]
   posts         Post[]

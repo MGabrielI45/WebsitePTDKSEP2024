@@ -1,7 +1,7 @@
-import client from "@/libs/prismadb";
 import { NextResponse } from "next/server";
 import { hash } from 'bcrypt';
 import * as z from 'zod';
+import {getCurrentUser} from "@/libs/session";
 import {db} from "@/libs/db";
 
 // validation
@@ -17,27 +17,32 @@ const userSchema = z
 
 
 
-// import {getCurrentUser} from "@/lib/session";
 
 export async function GET(req) {
-  // tunggu fitur login selesai untuk autentikasi
-  // const user = await getCurrentUser();
+  
+  const currentUser = await getCurrentUser();
 
   try {
+    if(!currentUser?.email){
+      return NextResponse.json({message:"Not Authenticated!"}, {status: 401})
+    }
 
     const { searchParams } = new URL(req.url)
     const email = searchParams.get('email')
     
 
 
-    const user = await client.user.findUnique({
+    const user = await db.user.findUnique({
       where: {
         email: email,
       },
     });
 
+    const {password, ...res} = user;
+    
+
     return NextResponse.json(
-      { user, },
+      { res },
       { status: 200 }
     );
   } catch (error) {
@@ -50,7 +55,14 @@ export async function GET(req) {
 }
 
 export async function POST(req: Request){
+  const currentUser = await getCurrentUser();
+
+
   try {
+    if(!currentUser?.email){
+      return NextResponse.json({message:"Not Authenticated!"}, {status: 401})
+    }
+
       const body = await req.json();
       const { email, name, password } = userSchema.parse(body);
 
@@ -81,19 +93,26 @@ export async function POST(req: Request){
   }
 }
 export async function PATCH(req) {
-  // tunggu fitur login selesai
-  // const user = await getCurrentUser(); 
+  const currentUser = await getCurrentUser();
+
 
   try {
-    const { email, profilePicture } = await req.json(); // Sementara nerima profile picture doang, tunggu fitur lain selesai
+    
+    const { data } = await req.json(); 
 
-    const user = await client.user.update({
+    const { email, ...userData} = data;
+    
+
+    if(!currentUser?.email && currentUser?.email !== data.email){
+      return NextResponse.json({message:"Not Authenticated!"}, {status: 401})
+    }
+
+   
+    const user = await db.user.update({
       where: {
-        email: email,
+        email: data.email,
       },
-      data : {
-        profilePicture: profilePicture
-      }
+      data : userData
     });
     return NextResponse.json(
       {
@@ -102,6 +121,7 @@ export async function PATCH(req) {
       { status: 200 }
     );
   } catch (error) {
+    console.log("wakwak", error)
     return NextResponse.json(
       { message: "Something went wrong" },
       { status: 500 }

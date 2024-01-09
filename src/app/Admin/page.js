@@ -1,7 +1,15 @@
 import React from 'react';
 import AdminBox from './components/AdminBox'; // Import the AdminBox component
+import { getCurrentUser } from '@/libs/session'
+import { redirect } from 'next/navigation'
+
 
 const Page = () => {
+  const user = getCurrentUser()
+  if(user.role !== 'admin'){
+    redirect('/')
+  }
+  
   const menuList = ['Jadwal', 'Tugas', 'Materi', 'Presensi', 'Diskusi', 'Dokumentasi'];
 
   const splitMenuList = (arr, size) => {

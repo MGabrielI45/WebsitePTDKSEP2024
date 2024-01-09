@@ -25,7 +25,7 @@ const Replies: FC<RepliesProps> = async ({ commentId }) => {
       {replies.map((reply) => (
         <div key={reply.id} className="">
           <div className="text-gray-300 font-bold pl-14">|</div>
-          <div className="flex justify-between border ml-5 rounded-md">
+          <div className="flex justify-between border ml-5 rounded-lg shadow-lg">
             <div className="p-3">
               <div className="flex gap-3 items-center">
                 <Link href={`/Profile/${reply.author.id}`}>
@@ -44,7 +44,7 @@ const Replies: FC<RepliesProps> = async ({ commentId }) => {
                   </span>
                 </h3>
               </div>
-              <p className="text-gray-600 mt-2">{reply.text}</p>
+              <p className="text-gray-600 font-semibold mt-2">{reply.text}</p>
             </div>
 
             <div className="flex flex-col gap-3 pr-3 py-3">

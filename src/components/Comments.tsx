@@ -33,18 +33,18 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
 
   return (
     <>
-      <h3 className="font-semibold p-1">Discussion</h3>
+      <h3 className="font-semibold p-1">Comments</h3>
       <div className="flex flex-col gap-5 m-3 ">
         {comments.map((comment) => (
           
           <div
             key={comment.id}
-            className="flex w-full justify-between border rounded-md pt-5"
+            className="flex w-full justify-between border rounded-lg shadow-lg pt-5"
           >
             
            
             <div className=" w-full">
-              <div className="grid grid-cols-12 border ml-5 mr-5  rounded-md">
+              <div className="grid grid-cols-12 border ml-5 mr-5 shadow-lg rounded-lg">
                 <div className="p-3 col-span-10">
                   <div className="flex gap-3 items-center">
                   <Link href={`/Profile/${comment.author.id}`}>
@@ -67,13 +67,13 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
                     </h3>
                     
                   </div>
-                  <p className="text-gray-600 mt-2">{comment.text}</p>
+                  <p className="text-black font-semibold mt-2">{comment.text}</p>
                 </div>
 
                 <div className="flex flex-col items-end col-span-2 justify-start">
                   <CommentLike comment={comment} userEmail={user?.email} likes={comment.commentLikes.length}/>
                 </div>
-                <div className="col-span-12 p-3">
+                <div className="col-span-12 px-3 mb-2">
                   <FormReply commentId={comment.id} />
                 </div>
               </div>

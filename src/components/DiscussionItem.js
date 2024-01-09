@@ -29,7 +29,7 @@ const DiscussionItem = ({ data }) => {
 
   return (
     <Link href={`/Diskusi/${data.id}`}>
-      <div className="bg-white rounded-lg overflow-hidden mb-4 w-full h-[100px] shadow-md border-[2px] flex items-center relative">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4 w-full h-[100px] border-[2px] flex items-center relative hover:transform hover:-translate-y-1 hover:shadow-xl transition duration-300 ease-in-out">
         <Link href={`/Profile/${data.author.id}`}>
           <img
             src={data.author.image ? data.author.image : "/pfpPlaceholder.png"}

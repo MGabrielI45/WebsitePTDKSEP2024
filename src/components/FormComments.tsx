@@ -52,7 +52,7 @@ const FormComment: FC<FormCommentProps> = ({ postId }) => {
         
         <input
           type="text"
-          className="col-span-10 m-3 w-full py-2 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+          className="col-span-10 m-3 w-full py-2 px-3 border bg-gray-200 border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
           name="comment"
           value={comments}
           placeholder="Add Comment"
@@ -60,7 +60,7 @@ const FormComment: FC<FormCommentProps> = ({ postId }) => {
         />
         <button
           onClick={handleSubmitComment}
-          className=" col-span-2 m-3 bg-blue-100 hover:bg-blue-200 text-white font-bold py-2 px-4 rounded-lg mt-2 disabled:bg-gray-400"
+          className=" col-span-2 m-3 bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-4 rounded-lg mt-2 disabled:bg-gray-400"
         >
           Submit Comment
         </button>

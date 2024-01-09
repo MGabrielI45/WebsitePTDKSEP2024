@@ -55,7 +55,7 @@ const FormReply: FC<FormReplyProps> = ({ commentId }) => {
 
   return (
     <div className="w-full">
-      <button className="text-right text-blue-500" onClick={handleClick}>{activeElement ? "Reply" : "Close reply"}</button>
+      <button className="text-right text-blue-100 font-semibold hover:transform hover:-translate-y-1 transition duration-300 ease-in-out" onClick={handleClick}>{activeElement ? "Reply" : "Close reply"}</button>
       <div className={`mt-4 w-full ${activeElement}`}>
         <label
           htmlFor="reply"
@@ -65,14 +65,15 @@ const FormReply: FC<FormReplyProps> = ({ commentId }) => {
         </label>
         <input
           type="text"
-          className="w-full py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+          className="w-full py-2 px-3 border border-gray-300 bg-gray-200 rounded-md focus:outline-none focus:ring focus:border-blue-300"
           name="comment"
+          placeholder="Add Reply"
           value={reply}
           onChange={handleReplyChange}
         />
         <button
           onClick={handleSubmitReply}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mt-2 disabled:bg-gray-400"
+          className="bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-4 rounded-md mt-2 disabled:bg-gray-400"
         >
           Submit Reply
         </button>

@@ -19,7 +19,7 @@ const EditProfile = ({ profile }) => {
     router.push("/sign-in");
   }
 
-  const { id, image, role, ...userProfile } = profile;
+  const { id, image, role, accounts, ...userProfile } = profile;
 
   const [formData, setFormData] = useState({ ...userProfile });
 

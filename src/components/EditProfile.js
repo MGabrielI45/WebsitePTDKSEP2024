@@ -63,8 +63,9 @@ const EditProfile = ({profile}) => {
   };
 
   const onBeforeFileLoad = (elem) => {
-    if (elem.target.files[0].size > 2 * 1024 * 1024) {
-      alert("File is too big! Maximum size is 2 MB");
+    if (elem.target.files[0].size > 0.1 * 1024 * 1024) {
+      
+      alert("File is too big! Maximum size is 100 KB !");
       elem.target.value = "";
     }
   };

@@ -3,6 +3,8 @@ import { db } from "@/libs/db";
 import { getCurrentUser } from "@/libs/session";
 import Profile from "@/components/Profile";
 import EditProfile from "@/components/EditProfile";
+import { redirect } from 'next/navigation'
+
 
 interface ProfileDetailPageProps {
   params: {
@@ -11,6 +13,12 @@ interface ProfileDetailPageProps {
 }
 
 const ProfileDetailPage: FC<ProfileDetailPageProps> = async ({ params }) => {
+  const user = await getCurrentUser()
+
+  if (!user) {
+    redirect('/sign-in')
+  }
+
   const userData = await db.user.findUnique({
     where: {
       id: params.id,

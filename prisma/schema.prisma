@@ -7,32 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Reminder {
-  id              String   @id @default(uuid())
-  title           String
-  descriptionLink String
-  deadlineDate    DateTime
-  description     String
-  fileLink        String?
-  grade           String    @default("Not Graded")
-}
-
-
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String?
-  providerAccountId  String?
-  refresh_token      String?  @db.String
-  access_token       String?  @db.String
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.String
-  session_state      String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String?
+  providerAccountId String?
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -45,31 +33,29 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-
 model User {
-  id            String    @id @default(cuid())
-  name          String
-  email         String   @unique
-  password      String?
-  emailVerified DateTime?
-  image         String?
-  birthPlace     String?
-  birthDate      String?
-  faculty            String?
-  major              String?
-  absentNumber       String?
-  phoneNumber        String?
-  emergencyNumber    String?
-  lineId             String?
-  instagram          String?
-  role               String?
-  accounts      Account[]
-  sessions      Session[]
-  posts         Post[]
-  comments      Comment[]
-  replies       Reply[]
-  commentLikes CommentLike[]
-
+  id              String        @id @default(cuid())
+  name            String
+  email           String        @unique
+  password        String?
+  emailVerified   DateTime?
+  image           String?
+  faculty         String?
+  absentNumber    String?
+  phoneNumber     String?
+  emergencyNumber String?
+  lineId          String?
+  instagram       String?
+  role            String?
+  birthPlace      String?
+  birthDate       String?
+  major           String?
+  accounts        Account[]
+  comments        Comment[]
+  commentLikes    CommentLike[]
+  posts           Post[]
+  replies         Reply[]
+  sessions        Session[]
 }
 
 model VerificationToken {
@@ -81,46 +67,66 @@ model VerificationToken {
 }
 
 model Post {
-  id String @id @default(cuid())
-  title String
-  content String
-  author User? @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
+  id          String    @id @default(cuid())
+  title       String
+  content     String
   authorEmail String?
-  createdAt DateTime @default(now())
-  comments Comment[]
-  
+  createdAt   DateTime  @default(now())
+  comments    Comment[]
+  author      User?     @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
 }
 
 model Comment {
-  id String @id @default(cuid())
-  text String
-  author User? @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
-  authorEmail String?
-  Post Post? @relation(fields: [postId], references: [id], onDelete: Cascade)
-  postId String?
-  createdAt DateTime @default(now())
-  replies Reply[]
+  id           String        @id @default(cuid())
+  text         String
+  author       User?         @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
+  authorEmail  String?
+  Post         Post?         @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId       String?
+  createdAt    DateTime      @default(now())
+  replies      Reply[]
   commentLikes CommentLike[]
 }
 
 model CommentLike {
-  id String @id @default(cuid())
-  author User? @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
+  id          String   @id @default(cuid())
   authorEmail String?
-  comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
-  commentId String?
-  createdAt DateTime @default(now())
-
- 
+  commentId   String?
+  createdAt   DateTime @default(now())
+  author      User?    @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
+  comment     Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
 }
 
 model Reply {
-  id String @id @default(cuid())
-  text String
-  author User? @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
+  id          String   @id @default(cuid())
+  text        String
   authorEmail String?
-  Comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
-  commentId String?
-  createdAt DateTime @default(now())
+  commentId   String?
+  createdAt   DateTime @default(now())
+  author      User?    @relation(fields: [authorEmail], references: [email], onDelete: Cascade)
+  comment     Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
 }
 
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  date        DateTime // due date for Tugas, occurence date for Day
+  description String
+  tugas       Tugas?
+  day         Day?
+}
+
+model Tugas {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  fileLink  String?
+  grade     String   @default("Not Graded")
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId   String   @unique
+}
+
+model Day {
+  id      String @id @default(uuid())
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId String @unique
+}

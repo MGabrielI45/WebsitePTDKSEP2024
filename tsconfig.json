@@ -22,8 +22,14 @@
     "paths": {
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"]
-    },
+    }
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/app/assignment/[id]/page.js"
+  ],
   "exclude": ["node_modules"]
 }

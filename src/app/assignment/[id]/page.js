@@ -1,26 +1,31 @@
-'use client'
+import AssignmentDetails from "@/components/AssignmentDetails";
+import React from "react";
 
-import { usePathname, useRouter } from 'next/navigation';
-import AssignmentDetails from '@/components/AssignmentDetails'; // Update the path accordingly
-import { listReminder } from '@/app/constants'; // Import your listReminder
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/libs/session";
+import { db } from "@/libs/db";
 
-const AssignmentPage = () => {
-  const router = useRouter();
-  const { id } = router.query || {};
-  
-  // fetching sesad
-  
-  const curPath = usePathname();
-  const idx = parseInt(curPath[curPath.length - 1], 10);
-  
-  // console.log(idx);
-  // Find the selected assignment from the listReminder
-  
-  const selectedAssignment = listReminder[idx];
+const AssignmentPage = async ({ params }) => {
+  const user = await getCurrentUser();
 
-  return ( 
-    <AssignmentDetails assignment={selectedAssignment} />
-  );
+  if (!user) {
+    redirect("/sign-in");
+  }
+
+  const tugas = await db.tugas.findFirst({
+    where: {
+      id: params.id,
+    },
+    include: {
+      event: true,
+    },
+  });
+
+  if (tugas != null) {
+    return <AssignmentDetails tugasInfo={tugas} />;
+  } else {
+    redirect("/404");
+  }
 };
 
 export default AssignmentPage;

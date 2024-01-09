@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from "react";
 import Avatar from "react-avatar-edit";
 import axios from "axios";
-import { useSession, getSession } from "next-auth/react";
+import { useSession, signOut} from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,9 +36,7 @@ const EditProfile = ({ profile }) => {
       const response = await axios.patch("/api/user", {
         data: formData,
       });
-      if (response.status === 200) {
-        setImg(preview);
-        successNotification("Profile updated!");
+      if (response.status === 200) {        successNotification("Profile updated!");
         router.refresh();
       }
     } catch (error) {
@@ -75,7 +73,7 @@ const EditProfile = ({ profile }) => {
         },
       });
       if (response.status === 200) {
-        setImg(preview);
+        setImg(profile.image);
         successNotification("Profile picture updated!");
         router.refresh();
       }
@@ -94,16 +92,17 @@ const EditProfile = ({ profile }) => {
           <img
             src={!img ? "/pfpPlaceholder.png" : img}
             alt="Profile Picture"
-            className="mx-auto mb-8 w-32 h-32 rounded-full"
+            className="mx-auto mb-8 w-32 h-32 rounded-full border-4 border-red-100"
           />
           {!profile.accounts.length && (
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded absolute bottom-0 right-0 mb-2 mr-2 text-xs"
+              className="bg-blue-100 hover:bg-blue-200 text-white font-bold py-1 px-2 rounded absolute bottom-3 right-2 mb-2 mr-2 text-xs"
               onClick={() => document.getElementById("modal").showModal()}
             >
               +
             </button>
           )}
+          
           <dialog
             id="modal"
             className="modal modal-bottom sm:modal-middle rounded-md"
@@ -148,6 +147,14 @@ const EditProfile = ({ profile }) => {
             </div>
           </dialog>
         </div>
+      </div>
+      <div className="flex justify-center items-center">
+      <button
+              onClick={signOut}
+              className=" mx-auto  bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-10 rounded-full cursor-pointer"
+            >
+              Log Out
+            </button>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -314,7 +321,7 @@ const EditProfile = ({ profile }) => {
               <div className="inline-flex items-end">
                 <button
                   type="submit"
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-8"
+                  className="bg-blue-100 hover:bg-blue-100 text-white font-bold py-2 px-4 rounded mt-8"
                 >
                   Submit
                 </button>

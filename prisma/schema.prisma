@@ -101,7 +101,6 @@ model Comment {
   createdAt DateTime @default(now())
   replies Reply[]
   commentLikes CommentLike[]
-  likes Int @default(0)
 }
 
 model CommentLike {

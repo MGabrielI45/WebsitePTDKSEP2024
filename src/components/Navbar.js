@@ -69,7 +69,7 @@ const Navbar = () => {
             src={profile.image ? profile.image : "/pfpPlaceholder.png"}
             width={40}
             height={40}
-            className="cursor-pointer rounded-full"
+            className="cursor-pointer rounded-full border-2 border-red-100"
           />
           {showDropdown && (
             <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-md">

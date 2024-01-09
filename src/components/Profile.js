@@ -34,7 +34,7 @@ const Profile = ({profile}) => {
           <img
             src={!img ? "/pfpPlaceholder.png" : img}
             alt="Profile Picture"
-            className="mx-auto mb-8 w-32 h-32 rounded-full"
+            className="mx-auto mb-8 w-32 h-32 rounded-full border-4 border-red-100"
           />
          
           

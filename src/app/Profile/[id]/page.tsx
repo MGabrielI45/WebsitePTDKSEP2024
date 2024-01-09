@@ -23,6 +23,9 @@ const ProfileDetailPage: FC<ProfileDetailPageProps> = async ({ params }) => {
     where: {
       id: params.id,
     },
+    include: {
+      accounts: true,
+    }
   });
   if (!userData) {
     return <div>Profile not found!</div>;

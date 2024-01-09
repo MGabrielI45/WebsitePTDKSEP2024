@@ -79,9 +79,11 @@ const Navbar = () => {
                     My Profile
                   </div>
                 </Link>
-                <div className="hover:bg-gray-100 cursor-pointer py-1 px-4">
-                  <button onClick={signOut}>Log Out</button>
-                </div>
+                <button className="w-full" onClick={signOut}>
+                  <div className="hover:bg-gray-100 cursor-pointer py-1 px-4 text-left my-auto">
+                    Log Out
+                  </div>
+                </button>
               </div>
             </div>
           )}

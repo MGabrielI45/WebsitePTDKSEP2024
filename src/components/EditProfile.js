@@ -7,13 +7,11 @@ import Avatar from "react-avatar-edit";
 import axios from "axios";
 import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { errorNotification, successNotification} from "@/app/(auth)/toast";
+import { errorNotification, successNotification } from "@/app/(auth)/toast";
 
-
-
-const EditProfile = ({profile}) => {
+const EditProfile = ({ profile }) => {
   const router = useRouter();
   const session = useSession();
 
@@ -21,8 +19,7 @@ const EditProfile = ({profile}) => {
     router.push("/sign-in");
   }
 
-  const {id, image, role, ...userProfile } = profile;
-
+  const { id, image, role, ...userProfile } = profile;
 
   const [formData, setFormData] = useState({ ...userProfile });
 
@@ -35,7 +32,7 @@ const EditProfile = ({profile}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try { 
+    try {
       const response = await axios.patch("/api/user", {
         data: formData,
       });
@@ -63,9 +60,8 @@ const EditProfile = ({profile}) => {
   };
 
   const onBeforeFileLoad = (elem) => {
-    if (elem.target.files[0].size > 0.1 * 1024 * 1024) {
-      
-      alert("File is too big! Maximum size is 100 KB !");
+    if (elem.target.files[0].size > 1 * 1024 * 1024) {
+      alert("File is too big! Maximum size is 1 MB !");
       elem.target.value = "";
     }
   };
@@ -89,6 +85,8 @@ const EditProfile = ({profile}) => {
     }
   };
 
+
+
   return (
     <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <div className="flex justify-center items-center">
@@ -98,12 +96,14 @@ const EditProfile = ({profile}) => {
             alt="Profile Picture"
             className="mx-auto mb-8 w-32 h-32 rounded-full"
           />
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded absolute bottom-0 right-0 mb-2 mr-2 text-xs"
-            onClick={() => document.getElementById("modal").showModal()}
-          >
-            +
-          </button>
+          {!profile.accounts.length && (
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded absolute bottom-0 right-0 mb-2 mr-2 text-xs"
+              onClick={() => document.getElementById("modal").showModal()}
+            >
+              +
+            </button>
+          )}
           <dialog
             id="modal"
             className="modal modal-bottom sm:modal-middle rounded-md"
@@ -153,9 +153,7 @@ const EditProfile = ({profile}) => {
       <form onSubmit={handleSubmit}>
         <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div className="grid gap-4 gap-y-2 text-sm grid-cols-4">
-            <div className="text-gray-600 col-span-4">
-              
-            </div>
+            <div className="text-gray-600 col-span-4"></div>
 
             <div className="lg:col-span-2">
               <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-12">
@@ -172,8 +170,6 @@ const EditProfile = ({profile}) => {
                     required
                   />
                 </div>
-
-                
 
                 <div className="md:col-span-6">
                   <label htmlFor="birthPlace">Tempat Lahir</label>
@@ -275,7 +271,9 @@ const EditProfile = ({profile}) => {
                     id="emergencyNumber"
                     pattern="[0-9]{11,12}"
                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                    value={formData.emergencyNumber ? formData.emergencyNumber : ""}
+                    value={
+                      formData.emergencyNumber ? formData.emergencyNumber : ""
+                    }
                     onChange={handleChange}
                     placeholder="Contoh: 081234567890"
                     required
@@ -326,8 +324,6 @@ const EditProfile = ({profile}) => {
         </div>
       </form>
 
-      
-      
       <ToastContainer />
     </div>
   );

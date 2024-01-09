@@ -36,14 +36,14 @@ const DiscussionItem = ({ data }) => {
             alt="Profile"
             width={100}
             height={100}
-            className="w-14 h-14 rounded-full mr-5 object-cover ml-[20px] border-4 border-red-100 hover:border-red-200 cursor-pointer"
+            className="w-14 h-14 rounded-full mr-5 object-cover ml-[20px] border-4 border-red-100 cursor-pointer hover:brightness-75"
           />
         </Link>
         <div className="flex-1 pr-4">
           <div className="flex items-center justify-between ">
             <div className="flex items-center mt-2 ">
               <Link href={`/Profile/${data.author.id}`}>
-                <span className="font-semibold text-[20px] text-blue-100">
+                <span className="font-semibold text-[20px] text-blue-100 hover:text-blue-200">
                   {data.author.name}
                 </span>
               </Link>

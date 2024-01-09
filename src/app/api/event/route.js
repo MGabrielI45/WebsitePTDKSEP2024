@@ -17,7 +17,6 @@ export async function GET() {
         date: "asc",
       },
     });
-    console.log(reminders);
     return NextResponse.json(reminders);
   } catch (error) {
     return NextResponse.json({ message: "Error" }, { status: 500 });

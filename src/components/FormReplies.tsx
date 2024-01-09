@@ -3,7 +3,9 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { errorNotification, successNotification } from "@/app/(auth)/toast";
 
 import { useRouter } from "next/navigation";
 
@@ -44,10 +46,12 @@ const FormReply: FC<FormReplyProps> = ({ commentId }) => {
         if (response.status === 200) {
           setReply("");
           setActiveElement("hidden");
+          successNotification("Reply has been created!");
           router.refresh();
         }
 
       } catch (error) {
+        errorNotification("Oops! Something went wrong!");
         console.error(error);
       }
     }
@@ -56,16 +60,10 @@ const FormReply: FC<FormReplyProps> = ({ commentId }) => {
   return (
     <div className="w-full">
       <button className="text-right text-blue-100 font-semibold hover:transform hover:-translate-y-1 transition duration-300 ease-in-out" onClick={handleClick}>{activeElement ? "Reply" : "Close reply"}</button>
-      <div className={`mt-4 w-full ${activeElement}`}>
-        <label
-          htmlFor="reply"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Add Reply
-        </label>
+      <div className={` w-full ${activeElement} grid grid-cols-12 gap-4`}>
         <input
           type="text"
-          className="w-full py-2 px-3 border border-gray-300 bg-gray-200 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+          className="col-span-10 w-full py-2 px-3 my-3 border border-gray-300 bg-gray-200 rounded-md focus:outline-none focus:ring focus:border-blue-300"
           name="comment"
           placeholder="Add Reply"
           value={reply}
@@ -73,11 +71,12 @@ const FormReply: FC<FormReplyProps> = ({ commentId }) => {
         />
         <button
           onClick={handleSubmitReply}
-          className="bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-4 rounded-md mt-2 disabled:bg-gray-400"
+          className="col-span-2 bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-4 rounded-md my-3 disabled:bg-gray-400"
         >
           Submit Reply
         </button>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

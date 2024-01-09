@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from "react";
 import Avatar from "react-avatar-edit";
 import axios from "axios";
-import { useSession, signOut} from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,7 +36,8 @@ const EditProfile = ({ profile }) => {
       const response = await axios.patch("/api/user", {
         data: formData,
       });
-      if (response.status === 200) {        successNotification("Profile updated!");
+      if (response.status === 200) {
+        successNotification("Profile updated!");
         router.refresh();
       }
     } catch (error) {
@@ -83,8 +84,6 @@ const EditProfile = ({ profile }) => {
     }
   };
 
-
-
   return (
     <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <div className="flex justify-center items-center">
@@ -102,7 +101,7 @@ const EditProfile = ({ profile }) => {
               +
             </button>
           )}
-          
+
           <dialog
             id="modal"
             className="modal modal-bottom sm:modal-middle rounded-md"
@@ -149,12 +148,12 @@ const EditProfile = ({ profile }) => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-      <button
-              onClick={signOut}
-              className=" mx-auto  bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-10 rounded-full cursor-pointer"
-            >
-              Log Out
-            </button>
+        <button
+          onClick={signOut}
+          className=" mx-auto  bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-10 rounded-full cursor-pointer"
+        >
+          Log Out
+        </button>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -207,32 +206,32 @@ const EditProfile = ({ profile }) => {
 
                 <div className="md:col-span-6">
                   <label htmlFor="faculty">Fakultas</label>
-                  <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                    <input
-                      name="faculty"
-                      id="faculty"
-                      className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
-                      value={formData.faculty ? formData.faculty : ""}
-                      onChange={handleChange}
-                      placeholder="Fakultas"
-                      required
-                    />
-                  </div>
+
+                  <input
+                    name="faculty"
+                    type="text"
+                    id="faculty"
+                    className="px-4 w-full h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                    value={formData.faculty ? formData.faculty : ""}
+                    onChange={handleChange}
+                    placeholder="Fakultas"
+                    required
+                  />
                 </div>
 
                 <div className="md:col-span-6">
                   <label htmlFor="major">Jurusan</label>
-                  <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                    <input
-                      name="major"
-                      id="major"
-                      placeholder="Jurusan"
-                      className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
-                      value={formData.major ? formData.major : ""}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
+
+                  <input
+                    name="major"
+                    id="major"
+                    type="text"
+                    placeholder="Jurusan"
+                    className="px-4 w-full  h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                    value={formData.major ? formData.major : ""}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
 
                 <div className="md:col-span-12">

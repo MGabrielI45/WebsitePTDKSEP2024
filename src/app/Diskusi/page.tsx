@@ -74,7 +74,9 @@ const DiscussionPage = () => {
         {post.posts.length ? (
           post.posts.map((item) => <DiscussionItem key={item.id} data={item} />)
         ) : (
-          <div className="text-center">No discussion yet!</div>
+          <div className="text-center align-center text-[28px] mb-2 text-red-100 font-semibold h-[50vh] flex justify-center items-center">
+            <p>No discussion yet! </p>
+          </div>
         )}
       </div>
 

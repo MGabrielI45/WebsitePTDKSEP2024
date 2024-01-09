@@ -23,9 +23,9 @@ const Reminder = async () => {
             <h1>Reminders</h1>
           </div>
           <div className="mb-4">
-            {reminders.map((item, index) => (
+            {reminders ? ( reminders.map((item, index) => (
               <ReminderCard reminder={item} key={index} />
-            ))}
+            )) ) : (<div className="text-center text-[28px] mb-2 text-red-100 font-semibold">No reminders yet!</div>)}
           </div>
         </div>
       </div>

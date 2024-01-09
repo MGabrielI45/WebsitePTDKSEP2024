@@ -48,11 +48,11 @@ const FormComment: FC<FormCommentProps> = ({ postId }) => {
 
   return (
     <div className="sticky bottom-4 ">
-      <div className="mt-4 grid grid-cols-12 gap-4 shadow-md bg-white">
+      <div className="mt-4 grid grid-cols-12 gap-4 shadow-md bg-white rounded-md">
         
         <input
           type="text"
-          className="col-span-10 m-3 w-full py-2 px-3 border bg-gray-200 border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+          className="col-span-10 m-3 w-full py-2 px-3 border bg-gray-200 border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300 "
           name="comment"
           value={comments}
           placeholder="Add Comment"

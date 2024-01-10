@@ -34,34 +34,38 @@ const PostDetailPage: FC<PostDetailPageProps> = async ({ params }) => {
   });
 
   return (
-    <div className="max-w-4xl mx-auto pb-8 min-h-[80vh]">
-      <div className="flex items-center relative">
+    <div className="flex flex-wrap flex-col justify-center content-center mx-auto pt-8 pb-16 px-32 min-h-[80vh] w-full bg-gray-100">
+      <div className="flex items-center relative w-full">
         <Link href="/Diskusi">
           <IoIosArrowBack className="text-[48px] rounded-lg text-black mr-2 hover:transform hover:bg-gray-300 hover:rounded-lg transition duration-300 ease-in-out absolute top-[34px] left-[-50px]" />
         </Link>
         <div className="mx-3">
-          <h1 className="text-[48px] text-red-100 font-bold mt-5">{post?.title}</h1>
+          <h1 className="text-[48px] text-red-100 font-bold mt-5">
+            {post?.title}
+          </h1>
           <div className="flex gap-3 items-center ">
             <Link href={`/Profile/${post.author.id}`}>
               <img
                 src={post.author?.image}
-                className="object-cover w-8 h-8 rounded-full border-2 border-red-100 scale-105 hover:brightness-75"
+                className="object-cover w-10 h-10 rounded-full border-2 border-red-100 scale-105 hover:brightness-75"
               />
             </Link>
 
-            <h3 className="font-bold text-blue-100 text-sm">
+            <h3 className="font-bold text-blue-100 hover:text-blue-200">
               <Link href={`/Profile/${post.author.id}`}>
-                <span className="hover:text-blue-200" >{post.author?.name}</span>
+                {post.author?.name}
               </Link>
               <br />
-              <span className="text-xs text-gray-400 font-normal">
+              <span className="text-sm text-gray-400 font-normal">
                 {format(post.createdAt, "HH:mm MMMM d, yyyy")}
               </span>
             </h3>
           </div>
         </div>
       </div>
-      <div className="mt-6 mb-4 mx-3 text-[24px] font-semibold">{post?.content}</div>
+      <div className="mt-6 mb-4 mx-3 text-[24px] font-semibold">
+        {post?.content}
+      </div>
 
       <Comments postId={params.id} />
       <FormComment postId={params.id} />

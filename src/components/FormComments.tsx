@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { errorNotification, successNotification } from "@/app/(auth)/toast";
 import { useRouter } from "next/navigation";
+import { IoSend } from "react-icons/io5";
 
 import { FC } from "react";
 
@@ -32,13 +33,12 @@ const FormComment: FC<FormCommentProps> = ({ postId }) => {
           text: comments,
           postId: postId,
         });
-        
+
         if (response.status === 200) {
           setComments("");
           successNotification("Comment has been created!");
           router.refresh();
         }
-
       } catch (error) {
         errorNotification("Oops! Something went wrong!");
         console.error(error);
@@ -47,12 +47,11 @@ const FormComment: FC<FormCommentProps> = ({ postId }) => {
   };
 
   return (
-    <div className="sticky bottom-4 ">
-      <div className="mt-4 grid grid-cols-12 gap-4 shadow-md bg-white rounded-md">
-        
+    <div className="sticky bottom-8 w-full">
+      <div className="mt-4 flex bg-[#DCDCDC] rounded-lg shadow-lg">
         <input
           type="text"
-          className="col-span-10 m-3 w-full py-2 px-3 border bg-gray-200 border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300 "
+          className="my-3 ml-3 w-full py-3 px-4 bg-[#DCDCDC] focus:outline-none"
           name="comment"
           value={comments}
           placeholder="Add Comment"
@@ -60,9 +59,9 @@ const FormComment: FC<FormCommentProps> = ({ postId }) => {
         />
         <button
           onClick={handleSubmitComment}
-          className=" col-span-2 m-3 bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-4 rounded-lg mt-2 disabled:bg-gray-400"
+          className="my-3 mr-3 p-4 bg-red-100 hover:bg-red-200 text-white rounded-lg disabled:bg-gray-400"
         >
-          Submit Comment
+          <IoSend />
         </button>
       </div>
       <ToastContainer />

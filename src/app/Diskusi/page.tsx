@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { errorNotification, successNotification } from "@/app/(auth)/toast";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { IoClose } from "react-icons/io5";
 
 const inputClass =
   "w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black";
@@ -65,12 +66,12 @@ const DiscussionPage = () => {
   };
 
   return (
-    <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 min-h-[80vh] h-100">
+    <div className="flex flex-wrap flex-col justify-center content-center py-8 px-4 sm:px-6 lg:px-8 h-100 bg-gray-100">
       <h1 className="text-[64px] text-red-100 font-bold text-center mb-8">
         Diskusi
       </h1>
 
-      <div className="">
+      <div className="w-11/12 p-5 mb-10 h-[56vh] overflow-auto flex flex-col gap-8 scrollbar-hide">
         {post.posts.length ? (
           post.posts.map((item) => <DiscussionItem key={item.id} data={item} />)
         ) : (
@@ -80,10 +81,12 @@ const DiscussionPage = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sticky bottom-12 ">
+      <div className="grid grid-cols-1 gap-4 sticky bottom-12 w-11/12 p-5 mb-4 no-scrollbar">
         <div
-          onClick={() => document.getElementById("modal").showModal()}
-          className="drop-shadow-md cursor-pointer bg-blue-100 hover:bg-blue-200 rounded-lg overflow-hidden  w-full h-[80px] shadow-md border-[2px] flex items-center justify-center"
+          onClick={() =>
+            (document.getElementById("modal") as HTMLDialogElement).showModal()
+          }
+          className="drop-shadow-md cursor-pointer bg-blue-100 hover:bg-blue-200 rounded-lg overflow-hidden  w-full h-[85px] shadow-md flex items-center justify-center"
         >
           <p className="text-[30px] text-white font-semibold">
             + Start a Discussion!
@@ -93,10 +96,14 @@ const DiscussionPage = () => {
 
       <dialog
         id="modal"
-        className="modal modal-bottom sm:modal-middle rounded-md"
+        className="modal modal-bottom sm:modal-middle rounded-md bg-white"
       >
         <div className="modal-box w-[500px] py-4">
-          <div className="modal-action ">
+          <div className="modal-action">
+            <h1 className="text-center text-red-100 font-bold text-xl mb-4">
+              {" "}
+              Create Discussion{" "}
+            </h1>
             <form className="max-w-md mx-auto p-4" action="">
               <div className="mb-4">
                 <input
@@ -104,7 +111,7 @@ const DiscussionPage = () => {
                   placeholder="Enter the title"
                   name="title"
                   id=""
-                  className={inputClass}
+                  className={`${inputClass} bg-gray-100 border-none`}
                   value={formData.title}
                   onChange={handleChange}
                   required
@@ -114,7 +121,7 @@ const DiscussionPage = () => {
                 <TextareaAutosize
                   minRows={5}
                   name="content"
-                  className={inputClass}
+                  className={`${inputClass} bg-gray-100 border-none`}
                   placeholder="Enter the content"
                   value={formData.content}
                   onChange={handleChange}
@@ -124,8 +131,8 @@ const DiscussionPage = () => {
             </form>
             <form method="dialog" className="max-w-md mx-auto p-4 pt-0">
               {/* if there is a button in form, it will close the modal */}
-              <button className=" btn bg-blue-100 hover:bg-blue-200 text-white font-bold py-1 px-2 rounded absolute top-0 right-0 mt-2 mr-2 text-xs">
-                X
+              <button className=" btn text-black font-bold py-1 px-2 rounded absolute top-1 right-1 mt-2 mr-2 text-xs">
+                <IoClose size={24} className="hover:drop-shadow" />
               </button>
               <button
                 onClick={() => formData.title && formData.content ? handleSubmit() : () => {}}

@@ -29,7 +29,7 @@ const DiscussionItem = ({ data }) => {
 
   return (
     <Link href={`/Diskusi/${data.id}`}>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4 w-full h-[100px] border-[2px] flex items-center relative hover:transform hover:-translate-y-1 hover:shadow-xl transition duration-300 ease-in-out">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full h-[100px] flex items-center relative hover:transform hover:-translate-y-1 hover:shadow-xl transition duration-300 ease-in-out">
         <Link href={`/Profile/${data.author.id}`}>
           <img
             src={data.author.image ? data.author.image : "/pfpPlaceholder.png"}
@@ -52,15 +52,15 @@ const DiscussionItem = ({ data }) => {
                 data.createdAt
               )}`}</span>
             </div>
-            <FaArrowRight
-              className="text-red-500 absolute right-4 mt-[60px]"
-              size={24}
-            />
           </div>
           <p className="text-[28px] mb-2 text-red-100 font-semibold">
             {data.title}
           </p>
         </div>
+        <FaArrowRight
+          className="text-red-500 absolute right-4 mr-4"
+          size={24}
+        />
       </div>
     </Link>
   );

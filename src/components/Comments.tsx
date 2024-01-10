@@ -42,7 +42,7 @@ const Comments: FC<CommentsProps> = async ({ postId }) => {
                     <Link href={`/Profile/${comment.author.id}`}>
                       <img
                         src={comment.author?.image}
-                        className="object-cover w-10 h-10 rounded-full border-2 border-red-100 scale-105 hover:brightness-80"
+                        className="object-cover w-10 h-10 rounded-full border-2 border-red-100 scale-105 hover:brightness-75"
                       />
                     </Link>
 

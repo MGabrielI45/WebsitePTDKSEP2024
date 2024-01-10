@@ -146,7 +146,7 @@ const ChangePassword = ({ profile }) => {
               </div>
 
               <button
-                className="mt-4 bg-gradient-to-r from-[#D32026] to-[#FA6065] hover:bg-blue-700 text-white font-bold py-2 px-10 rounded-full cursor-pointer"
+                className="mt-4 bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-10 rounded-full cursor-pointer"
                 type="submit"
               >
                 Change Password

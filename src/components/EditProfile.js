@@ -138,7 +138,7 @@ const EditProfile = ({ profile }) => {
                   Close
                 </button>
                 <button
-                  className="btn bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg"
+                  className="btn bg-blue-100 hover:bg-blue-200 text-white p-3 rounded-lg"
                   onClick={handleImageSubmit}
                 >
                   Submit

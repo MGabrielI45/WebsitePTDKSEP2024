@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { errorNotification, successNotification } from "@/app/(auth)/toast";
+import ChangePassword from "@/components/ChangePassword";
 
 const EditProfile = ({ profile }) => {
   const router = useRouter();
@@ -74,7 +75,7 @@ const EditProfile = ({ profile }) => {
         },
       });
       if (response.status === 200) {
-        setImg(profile.image);
+        setImg(preview);
         successNotification("Profile picture updated!");
         router.refresh();
       }
@@ -147,13 +148,17 @@ const EditProfile = ({ profile }) => {
           </dialog>
         </div>
       </div>
-      <div className="flex justify-center items-center">
-        <button
-          onClick={signOut}
-          className=" mx-auto  bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-10 rounded-full cursor-pointer"
-        >
-          Log Out
-        </button>
+      <div className="flex justify-center items-center flex-col">
+        {!profile.accounts.length ? (
+          <ChangePassword profile={profile} />
+        ) : (
+          <button
+            onClick={signOut}
+            className=" mx-auto  bg-red-100 hover:bg-red-200 text-white font-bold py-2 px-10 rounded-full cursor-pointer"
+          >
+            Log Out
+          </button>
+        )}
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -320,7 +325,7 @@ const EditProfile = ({ profile }) => {
               <div className="inline-flex items-end">
                 <button
                   type="submit"
-                  className="bg-blue-100 hover:bg-blue-100 text-white font-bold py-2 px-4 rounded mt-8"
+                  className="bg-blue-100 hover:bg-blue-200 text-white font-bold py-2 px-4 rounded mt-8"
                 >
                   Submit
                 </button>

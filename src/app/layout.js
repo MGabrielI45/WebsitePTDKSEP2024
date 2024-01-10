@@ -1,39 +1,45 @@
-'use client'
+"use client";
 
-import  Provider from '@/components/provider'
+import Provider from "@/components/provider";
 
+import { Montserrat } from "next/font/google";
+import { usePathname } from "next/navigation";
 
-import { Montserrat } from 'next/font/google'
-import { usePathname } from 'next/navigation'
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import "./globals.css";
 
-import './globals.css'
-
-const montserrat = Montserrat({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-montserrat',
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
 });
 
 export default function RootLayout({ children }) {
-  
   const pathname = usePathname();
-  const noFooter = ['/sign-in', '/sign-up', '/forget-password', '/reset-password','/Admin']
-  const haveFooter = noFooter.includes(pathname)
+  const noFooter = [
+    "/sign-in",
+    "/sign-up",
+    "/forget-password",
+    "/reset-password",
+    "/Admin",
+  ];
+  const haveFooter = noFooter.includes(pathname);
 
   return (
     <html lang="en" className={montserrat.variable}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <title>PTD KSEP 2024</title>
+      </head>
       <body>
         <Provider>
-        {(!haveFooter) ? <Navbar /> : null}
-        <main>
-          {children}
-        </main>
-        {(!haveFooter) ? <Footer /> : null}
+          {!haveFooter ? <Navbar /> : null}
+          <main>{children}</main>
+          {!haveFooter ? <Footer /> : null}
         </Provider>
       </body>
     </html>
-  )
+  );
 }

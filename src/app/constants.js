@@ -89,3 +89,26 @@ export const listDokumentasi = [
       'tanggal':'19 Oktober 2023'
     }
   ];
+
+  export const listKehadiran = [
+    {
+      'nama':'Adiel',
+      'status':'Hadir'
+    },
+    {
+      'nama':'Adiel',
+      'status':'Tidak Hadir'
+    },
+    {
+      'nama':'Adiel',
+      'status':'Hadir'
+    },
+    {
+      'nama':'Adiel',
+      'status':'Izin'
+    },
+    {
+      'nama':'Adiel',
+      'status':'Hadir'
+    }
+  ]

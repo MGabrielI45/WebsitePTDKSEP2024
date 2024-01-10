@@ -11,6 +11,8 @@ function ReminderCard({ reminder }) {
     // Tugas
     if (reminder.tugas != null) {
       router.push(`/assignment/${reminder.tugas.id}`);
+    } else {
+      router.push(`Day/${reminder.day.id}`)
     }
     // Non-tugas to be continued
   };

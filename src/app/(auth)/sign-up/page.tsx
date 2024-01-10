@@ -135,6 +135,7 @@ const NewAccount = () => {
                   value={formData.name}
                   required
                   onChange={handleChange}
+                  maxLength={30}
                   className="pl-8 pr-4 py-2 rounded-md w-72 focus:outline-none bg-transparent"
                 />
               </div>

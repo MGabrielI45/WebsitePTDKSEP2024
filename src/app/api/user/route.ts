@@ -49,12 +49,6 @@ export async function POST(req: Request) {
   const currentUser = await getCurrentUser();
 
   try {
-    if (!currentUser?.email) {
-      return NextResponse.json(
-        { message: "Not Authenticated!" },
-        { status: 401 }
-      );
-    }
 
     const body = await req.json();
     const { email, name, password } = userSchema.parse(body);

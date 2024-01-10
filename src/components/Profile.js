@@ -59,7 +59,7 @@ const Profile = ({profile}) => {
                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none"
                     value={formData.name}
                 
-                    placeholder="Nama Lengkap"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -76,7 +76,7 @@ const Profile = ({profile}) => {
                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none"
                     value={formData.birthPlace ? formData.birthPlace : ""}
                    
-                    placeholder="Tempat Lahir"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -106,7 +106,7 @@ const Profile = ({profile}) => {
                       className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent focus:outline-none"
                       value={formData.faculty ? formData.faculty : ""}
                       
-                      placeholder="Fakultas"
+                      placeholder=""
                       required
                     />
                   </div>
@@ -120,7 +120,7 @@ const Profile = ({profile}) => {
                       id="major"
                       type="text"
                       readOnly
-                      placeholder="Jurusan"
+                      placeholder=""
                       className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
                       value={formData.major ? formData.major : ""}
                       
@@ -141,7 +141,7 @@ const Profile = ({profile}) => {
                     className="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none"
                     value={formData.absentNumber ? formData.absentNumber : ""}
                   
-                    placeholder="No. Absen"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -161,7 +161,7 @@ const Profile = ({profile}) => {
                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none"
                     value={formData.phoneNumber ? formData.phoneNumber : ""}
                   
-                    placeholder="Contoh: 081234567890"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -177,8 +177,8 @@ const Profile = ({profile}) => {
                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none"
                     value={formData.emergencyNumber ? formData.emergencyNumber : ""}
                   
-                    placeholder="Contoh: 081234567890"
-                    required
+                    placeholder=""
+                    required0
                   />
                 </div>
 
@@ -192,7 +192,7 @@ const Profile = ({profile}) => {
                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none"
                     value={formData.lineId ? formData.lineId : ""}
                 
-                    placeholder="ID Line"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -207,7 +207,7 @@ const Profile = ({profile}) => {
                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 focus:outline-none"
                     value={formData.instagram ? formData.instagram : ""}
                    
-                    placeholder="Instagram"
+                    placeholder=""
                     required
                   />
                 </div>

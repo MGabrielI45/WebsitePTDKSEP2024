@@ -128,7 +128,7 @@ const DiscussionPage = () => {
                 X
               </button>
               <button
-                onClick={handleSubmit}
+                onClick={() => formData.title && formData.content ? handleSubmit() : () => {}}
                 className="bg-blue-100 hover:bg-blue-200 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full disabled:bg-gray-400"
               >
                 Submit

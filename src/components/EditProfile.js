@@ -178,6 +178,7 @@ const EditProfile = ({ profile }) => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Nama Lengkap"
+                    maxLength={30}
                     required
                   />
                 </div>
@@ -220,6 +221,7 @@ const EditProfile = ({ profile }) => {
                     value={formData.faculty ? formData.faculty : ""}
                     onChange={handleChange}
                     placeholder="Fakultas"
+                    maxLength={30}
                     required
                   />
                 </div>
@@ -235,6 +237,7 @@ const EditProfile = ({ profile }) => {
                     className="px-4 w-full  h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                     value={formData.major ? formData.major : ""}
                     onChange={handleChange}
+                    maxLength={30}
                     required
                   />
                 </div>
